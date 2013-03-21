@@ -19,6 +19,11 @@
 		A2EC193D16FABF7B0085A508 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EC193C16FABF7B0085A508 /* FBViewController.m */; };
 		A2EC194016FABF7B0085A508 /* FBViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2EC193E16FABF7B0085A508 /* FBViewController_iPhone.xib */; };
 		A2EC194316FABF7B0085A508 /* FBViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2EC194116FABF7B0085A508 /* FBViewController_iPad.xib */; };
+		A2EC194A16FAC03B0085A508 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC194916FAC03B0085A508 /* Firebase.framework */; };
+		A2EC194C16FAC2050085A508 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC194B16FAC2050085A508 /* CFNetwork.framework */; };
+		A2EC194E16FAC2F70085A508 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC194D16FAC2F70085A508 /* Security.framework */; };
+		A2EC195016FAC2FF0085A508 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC194F16FAC2FF0085A508 /* libicucore.dylib */; };
+		A2EC195316FACDD20085A508 /* FBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EC195216FACDD20085A508 /* FBUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,12 @@
 		A2EC193C16FABF7B0085A508 /* FBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		A2EC193F16FABF7B0085A508 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBViewController_iPhone.xib; sourceTree = "<group>"; };
 		A2EC194216FABF7B0085A508 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBViewController_iPad.xib; sourceTree = "<group>"; };
+		A2EC194916FAC03B0085A508 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		A2EC194B16FAC2050085A508 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A2EC194D16FAC2F70085A508 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A2EC194F16FAC2FF0085A508 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		A2EC195116FACDD20085A508 /* FBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBUtils.h; sourceTree = "<group>"; };
+		A2EC195216FACDD20085A508 /* FBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,9 +57,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2EC195016FAC2FF0085A508 /* libicucore.dylib in Frameworks */,
+				A2EC194E16FAC2F70085A508 /* Security.framework in Frameworks */,
+				A2EC194C16FAC2050085A508 /* CFNetwork.framework in Frameworks */,
 				A2EC192416FABF7B0085A508 /* UIKit.framework in Frameworks */,
 				A2EC192616FABF7B0085A508 /* Foundation.framework in Frameworks */,
 				A2EC192816FABF7B0085A508 /* CoreGraphics.framework in Frameworks */,
+				A2EC194A16FAC03B0085A508 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +73,9 @@
 		A2EC191716FABF7B0085A508 = {
 			isa = PBXGroup;
 			children = (
+				A2EC194F16FAC2FF0085A508 /* libicucore.dylib */,
+				A2EC194D16FAC2F70085A508 /* Security.framework */,
+				A2EC194B16FAC2050085A508 /* CFNetwork.framework */,
 				A2EC192916FABF7B0085A508 /* FireBaseSample */,
 				A2EC192216FABF7B0085A508 /* Frameworks */,
 				A2EC192116FABF7B0085A508 /* Products */,
@@ -75,6 +93,7 @@
 		A2EC192216FABF7B0085A508 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2EC194916FAC03B0085A508 /* Firebase.framework */,
 				A2EC192316FABF7B0085A508 /* UIKit.framework */,
 				A2EC192516FABF7B0085A508 /* Foundation.framework */,
 				A2EC192716FABF7B0085A508 /* CoreGraphics.framework */,
@@ -92,6 +111,8 @@
 				A2EC193E16FABF7B0085A508 /* FBViewController_iPhone.xib */,
 				A2EC194116FABF7B0085A508 /* FBViewController_iPad.xib */,
 				A2EC192A16FABF7B0085A508 /* Supporting Files */,
+				A2EC195116FACDD20085A508 /* FBUtils.h */,
+				A2EC195216FACDD20085A508 /* FBUtils.m */,
 			);
 			path = FireBaseSample;
 			sourceTree = "<group>";
@@ -181,6 +202,7 @@
 				A2EC193016FABF7B0085A508 /* main.m in Sources */,
 				A2EC193416FABF7B0085A508 /* FBAppDelegate.m in Sources */,
 				A2EC193D16FABF7B0085A508 /* FBViewController.m in Sources */,
+				A2EC195316FACDD20085A508 /* FBUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +295,14 @@
 		A2EC194716FABF7B0085A508 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FireBaseSample/FireBaseSample-Prefix.pch";
 				INFOPLIST_FILE = "FireBaseSample/FireBaseSample-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -284,9 +311,14 @@
 		A2EC194816FABF7B0085A508 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FireBaseSample/FireBaseSample-Prefix.pch";
 				INFOPLIST_FILE = "FireBaseSample/FireBaseSample-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

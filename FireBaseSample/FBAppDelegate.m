@@ -8,6 +8,7 @@
 
 #import "FBAppDelegate.h"
 
+#import "FBUtils.h"
 #import "FBViewController.h"
 
 @implementation FBAppDelegate
@@ -21,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Firebase setDispatchQueue:GetFirebaseWorkingQueue()];
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

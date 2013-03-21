@@ -11,3 +11,13 @@
 @implementation FBUtils
 
 @end
+
+static dispatch_queue_t _firebase_worker;
+
+dispatch_queue_t GetFirebaseWorkingQueue()
+{
+    if (!_firebase_worker) {
+        _firebase_worker = dispatch_queue_create("com.cyblion.firebase", NULL);
+    }
+    return _firebase_worker;
+}

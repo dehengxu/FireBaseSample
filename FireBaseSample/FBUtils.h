@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+//Firebase url likes :https://SampleChat.firebaseIO-demo.com
+#define kFBURL @""
+
 @interface FBUtils : NSObject
 
 @end
+
+extern dispatch_queue_t GetFirebaseWorkingQueue();
