@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2E5D66216FBF3AF00AEA9B6 /* FirebaseDB.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E5D66116FBF3AF00AEA9B6 /* FirebaseDB.m */; };
 		A2EC192416FABF7B0085A508 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC192316FABF7B0085A508 /* UIKit.framework */; };
 		A2EC192616FABF7B0085A508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC192516FABF7B0085A508 /* Foundation.framework */; };
 		A2EC192816FABF7B0085A508 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2EC192716FABF7B0085A508 /* CoreGraphics.framework */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A2E5D66016FBF3AF00AEA9B6 /* FirebaseDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseDB.h; sourceTree = "<group>"; };
+		A2E5D66116FBF3AF00AEA9B6 /* FirebaseDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseDB.m; sourceTree = "<group>"; };
 		A2EC192016FABF7B0085A508 /* FireBaseSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2EC192316FABF7B0085A508 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2EC192516FABF7B0085A508 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 				A2EC192A16FABF7B0085A508 /* Supporting Files */,
 				A2EC195116FACDD20085A508 /* FBUtils.h */,
 				A2EC195216FACDD20085A508 /* FBUtils.m */,
+				A2E5D66016FBF3AF00AEA9B6 /* FirebaseDB.h */,
+				A2E5D66116FBF3AF00AEA9B6 /* FirebaseDB.m */,
 			);
 			path = FireBaseSample;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				A2EC191C16FABF7B0085A508 /* Sources */,
 				A2EC191D16FABF7B0085A508 /* Frameworks */,
 				A2EC191E16FABF7B0085A508 /* Resources */,
+				A2E5D66316FBF7CE00AEA9B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -194,6 +200,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A2E5D66316FBF7CE00AEA9B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"Todo:|TODO:|Fix:|fix:|Error:|Review:|Fixme:|FIXME:|Warnning:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A2EC191C16FABF7B0085A508 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +225,7 @@
 				A2EC193416FABF7B0085A508 /* FBAppDelegate.m in Sources */,
 				A2EC193D16FABF7B0085A508 /* FBViewController.m in Sources */,
 				A2EC195316FACDD20085A508 /* FBUtils.m in Sources */,
+				A2E5D66216FBF3AF00AEA9B6 /* FirebaseDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +366,7 @@
 				A2EC194816FABF7B0085A508 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

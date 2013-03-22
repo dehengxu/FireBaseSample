@@ -8,8 +8,7 @@
 
 #import "FBViewController.h"
 #import "FBUtils.h"
-
-static NSString *user_name = @"Nick";
+#import "FirebaseDB.h"
 
 @interface FBViewController ()
 
@@ -18,6 +17,7 @@ static NSString *user_name = @"Nick";
 @implementation FBViewController
 
 @synthesize firebase = _firebase;
+@synthesize fbDB = _fbDB;
 
 - (void)dealloc
 {
@@ -59,25 +59,34 @@ static NSString *user_name = @"Nick";
     }
 }
 
+- (FirebaseDB *)fbDB
+{
+    if (!_fbDB) {
+        _fbDB = [[FirebaseDB alloc] initWithUrl:kFBURL];
+    }
+    return _fbDB;
+}
+
 - (void)onClick_send:(id)sender
 {
     @try {
-        Firebase *fdb = nil;
-        fdb = [self.firebase childByAppendingPath:@"test"];
-        Firebase *subFdb = [fdb childByAutoId];
+        FirebaseDB *fbDB = self.fbDB;
+        [fbDB setValue:@"KKDF" forKeyPath:@"User/Message"];
+        [fbDB setValue:[NSString stringWithFormat:@"%@", [NSDate date]] forKeyPath:@"User/Time"];
+                
+    }
+    @catch (NSException *exception) {
+        NSLog(@"~ %@", exception);
+    }
+    @finally {
+        NSLog(@"~ saved over!");
+    }
+}
 
-        NSDate *date = nil;
-        
-        date = [NSDate date];
-        [subFdb setValue:[NSString stringWithFormat:@"Hello %f", date.timeIntervalSince1970]  withCompletionBlock:^(NSError *error) {
-            NSLog(@"err:%@, elaps :%f;", [error localizedDescription], [[NSDate date] timeIntervalSinceDate:date]);
-        }];
-        
-        date = [NSDate date];
-        [subFdb setValue:[NSString stringWithFormat:@"Hi,where are U? %f", date.timeIntervalSince1970] withCompletionBlock:^(NSError *error) {
-            NSLog(@"err:%@, elaps :%f;", [error localizedDescription], [[NSDate date] timeIntervalSinceDate:date]);
-        }];
-        
+- (void)onClick_clear:(id)sender
+{
+    @try {
+        [self.fbDB removeValueForKeyPath:@"User/Message"];
     }
     @catch (NSException *exception) {
         NSLog(@"~ %@", exception);
@@ -89,17 +98,6 @@ static NSString *user_name = @"Nick";
 
 - (void)onClick_fetch:(id)sender
 {
-    @try {
-        
-        Firebase *fdb = [self.firebase childByAppendingPath:@"test"];
-        [fdb removeValue];        
-    }
-    @catch (NSException *exception) {
-        NSLog(@"~ %@", exception);
-    }
-    @finally {
-        NSLog(@"~ saved over!");
-    }
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //Firebase url likes :https://SampleChat.firebaseIO-demo.com
-#define kFBURL @""
+#define kFBURL @"http://fdb-sample.firebaseio.com/"
 
 @interface FBUtils : NSObject
 
