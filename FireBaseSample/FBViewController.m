@@ -63,6 +63,7 @@
 {
     if (!_fbDB) {
         _fbDB = [[FirebaseDB alloc] initWithUrl:kFBURL];
+        _fbDB.delegate = self;
     }
     return _fbDB;
 }
@@ -98,6 +99,13 @@
 
 - (void)onClick_fetch:(id)sender
 {
+    [self.fbDB valueForKeyPath:@"User/Message"];
+
+}
+
+- (void)friebaseDB:(FirebaseDB *)afbDB didFetchedValue:(id)value
+{
+    NSLog(@"value :%@", value);
 }
 
 @end

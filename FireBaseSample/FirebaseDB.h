@@ -12,12 +12,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class FirebaseDB;
+
+@protocol FirebaseDBDelegate <NSObject>
+
+@optional
+- (void)friebaseDB:(FirebaseDB *)afbDB didFetchedValue:(id)value;
+
+@end
+
 @class Firebase;
 
 @interface FirebaseDB : NSObject
 
 @property (nonatomic, readonly) NSURL *fbURL;
 @property (nonatomic, readonly) Firebase *firebase;
+@property (nonatomic, assign) id<FirebaseDBDelegate> delegate;
 
 
 + (void)setDispatchQueue:(dispatch_queue_t) dispatch_queue;

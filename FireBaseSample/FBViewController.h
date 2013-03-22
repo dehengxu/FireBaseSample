@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class Firebase;
-@class FirebaseDB;
+#import "FirebaseDB.h"
 
-@interface FBViewController : UIViewController
+@interface FBViewController : UIViewController<FirebaseDBDelegate>
 
 @property (nonatomic, readonly) Firebase *firebase;
 @property (nonatomic, readonly) FirebaseDB *fbDB;

@@ -85,10 +85,13 @@ static dispatch_queue_t __fb_dispatch_queue = NULL;
 
 - (id)valueForKeyPath:(NSString *)keyPath
 {
-    //Todo:To be implementation soon!
     __block id value = nil;
-    [self.firebase observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    Firebase *fb = [self.firebase childByAppendingPath:keyPath];
+    [fb observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         value = snapshot.value;
+        if (_delegate && [_delegate respondsToSelector:@selector(friebaseDB:didFetchedValue:)]) {
+            [_delegate friebaseDB:self didFetchedValue:value];
+        }
     }];
     return value;
 }
