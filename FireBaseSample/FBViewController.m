@@ -33,6 +33,9 @@
 	// Do any additional setup after loading the view, typically from a nib.    
     self.resultView.text = @"";
     self.sendView.text = @"";
+    dispatch_queue_t queue = dispatch_queue_create("com.cyblion.firebase", NULL);
+    [FirebaseDB setDispatchQueue:queue];
+    dispatch_release(queue);
 }
 
 - (void)didReceiveMemoryWarning
