@@ -74,7 +74,6 @@
         FirebaseDB *fbDB = self.fbDB;
         [fbDB setValue:@"KKDF" forKeyPath:@"User/Message"];
         [fbDB setValue:[NSString stringWithFormat:@"%@", [NSDate date]] forKeyPath:@"User/Time"];
-                
     }
     @catch (NSException *exception) {
         NSLog(@"~ %@", exception);
@@ -99,13 +98,31 @@
 
 - (void)onClick_fetch:(id)sender
 {
+    //fetch specified node.
     [self.fbDB valueForKeyPath:@"User/Message"];
+    [self.fbDB valueForKeyPath:@"User/Time"];
+    [self.fbDB valueForKeyPath:@"/User"];
+    //fetch root node.
+    [self.fbDB valueForKeyPath:@"/"];
+    
+}
 
+- (void)didSuccessedWritingFirebaseDB:(FirebaseDB *)afbDB
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)didFailedWritingFirebaseDB:(FirebaseDB *)afbDB withError:(NSError *)anError
+{
+    NSLog(@"%s %@", __FUNCTION__, [anError localizedDescription]);
 }
 
 - (void)friebaseDB:(FirebaseDB *)afbDB didFetchedValue:(id)value
 {
     NSLog(@"value :%@", value);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.resultView.text = [NSString stringWithFormat:@"%@\n%@", self.resultView.text, value];
+    });
 }
 
 @end

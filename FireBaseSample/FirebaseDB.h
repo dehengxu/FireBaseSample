@@ -18,6 +18,8 @@
 
 @optional
 - (void)friebaseDB:(FirebaseDB *)afbDB didFetchedValue:(id)value;
+- (void)didSuccessedWritingFirebaseDB:(FirebaseDB *)afbDB;
+- (void)didFailedWritingFirebaseDB:(FirebaseDB *)afbDB withError:(NSError *)anError;
 
 @end
 

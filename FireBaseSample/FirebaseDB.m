@@ -73,27 +73,43 @@ static dispatch_queue_t __fb_dispatch_queue = NULL;
 
 - (id)value
 {
-    //Todo:To be implementation soon!
+    [self.firebase observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (_delegate && [_delegate respondsToSelector:@selector(friebaseDB:didFetchedValue:)]) {
+            [_delegate friebaseDB:self didFetchedValue:snapshot.value];
+        }
+    }];
     return nil;
 }
 
 - (void)setValue:(id)value forKeyPath:(NSString *)keyPath
 {
     Firebase *fb = [self.firebase childByAppendingPath:keyPath];
-    [fb setValue:value];
+    
+    [fb setValue:value withCompletionBlock:^(NSError *error) {
+        if (_delegate) {
+            if (error) {
+                if ([_delegate respondsToSelector:@selector(didFailedWritingFirebaseDB:withError:)]) {
+                    [_delegate didFailedWritingFirebaseDB:self withError:error];
+                }
+            }else {
+                if ([_delegate respondsToSelector:@selector(didSuccessedWritingFirebaseDB:)]) {
+                    [_delegate didSuccessedWritingFirebaseDB:self];
+                }
+            }
+        }
+    }];
 }
 
 - (id)valueForKeyPath:(NSString *)keyPath
 {
-    __block id value = nil;
     Firebase *fb = [self.firebase childByAppendingPath:keyPath];
     [fb observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        value = snapshot.value;
         if (_delegate && [_delegate respondsToSelector:@selector(friebaseDB:didFetchedValue:)]) {
-            [_delegate friebaseDB:self didFetchedValue:value];
+            NSLog(@"finished :%@", keyPath);
+            [_delegate friebaseDB:self didFetchedValue:snapshot.value];
         }
     }];
-    return value;
+    return nil;
 }
 
 - (void)removeValueForKeyPath:(NSString *)keyPath
